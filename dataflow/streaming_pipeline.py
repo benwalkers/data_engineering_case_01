@@ -46,7 +46,7 @@ def run(argv=None):
     with beam.Pipeline(options=options) as p:
         rows = (
             p
-            | "ReadPubSub" >> beam.io.ReadFromPubSub(topic="projects/PROJECT/topics/flixmedia-events")
+            | "ReadPubSub" >> beam.io.ReadFromPubSub(topic="projects/PROJECT/topics/xyz-events")
             | "ParseJson" >> beam.ParDo(ParseJson())
         )
         _ = rows | "WriteRawArchive" >> beam.io.WriteToText("gs://BUCKET/raw/events", file_name_suffix=".jsonl")

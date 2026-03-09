@@ -1,6 +1,6 @@
 dataScan:
   data:
-    resource: //bigquery.googleapis.com/projects/flixmedia-benjaminpiscoya/datasets/flixmedia_curated/tables/modules_curated
+    resource: //bigquery.googleapis.com/projects/xyz-benjaminpiscoya/datasets/xyz_curated/tables/modules_curated
   executionSpec:
     trigger:
       schedule:

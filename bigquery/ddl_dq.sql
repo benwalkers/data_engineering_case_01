@@ -1,6 +1,6 @@
-CREATE SCHEMA IF NOT EXISTS `flixmedia_dq`;
+CREATE SCHEMA IF NOT EXISTS `xyz_dq`;
 
-CREATE TABLE IF NOT EXISTS `flixmedia_dq.modules_dq`
+CREATE TABLE IF NOT EXISTS `xyz_dq.modules_dq`
 (
   date DATE,
   session_token STRING,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `flixmedia_dq.modules_dq`
 PARTITION BY date
 CLUSTER BY severity, distributor_id, product_id;
 
-CREATE TABLE IF NOT EXISTS `flixmedia_dq.module_services_dq`
+CREATE TABLE IF NOT EXISTS `xyz_dq.module_services_dq`
 (
   date DATE,
   session_token STRING,

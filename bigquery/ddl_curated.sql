@@ -1,6 +1,6 @@
-CREATE SCHEMA IF NOT EXISTS `flixmedia_curated`;
+CREATE SCHEMA IF NOT EXISTS `xyz_curated`;
 
-CREATE TABLE IF NOT EXISTS `flixmedia_curated.modules_curated`
+CREATE TABLE IF NOT EXISTS `xyz_curated.modules_curated`
 (
   date DATE,
   session_token STRING,
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `flixmedia_curated.modules_curated`
 PARTITION BY date
 CLUSTER BY distributor_id, product_id;
 
-CREATE TABLE IF NOT EXISTS `flixmedia_curated.module_services_curated`
+CREATE TABLE IF NOT EXISTS `xyz_curated.module_services_curated`
 (
   date DATE,
   session_token STRING,

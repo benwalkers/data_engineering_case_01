@@ -10,7 +10,7 @@ with DAG(
     start_date=datetime(2026, 1, 1),
     schedule="@daily",
     catchup=False,
-    tags=["flixmedia", "contracts"],
+    tags=["xyz", "contracts"],
 ) as dag:
     validate_contracts = BashOperator(
         task_id="validate_contracts",

@@ -2,13 +2,13 @@ contract_name: module_services
 version: 1.0.0
 owner: data-engineering
 source:
-  project_id: flixmedia-benjaminpiscoya
-  dataset_id: flixmedia
+  project_id: xyz-benjaminpiscoya
+  dataset_id: xyz
   table_id: module_Services
 target:
-  raw_table: flixmedia_raw.module_services_raw
-  curated_table: flixmedia_curated.module_services_curated
-  dq_table: flixmedia_dq.module_services_dq
+  raw_table: xyz_raw.module_services_raw
+  curated_table: xyz_curated.module_services_curated
+  dq_table: xyz_dq.module_services_dq
 grain: [date, distributor_id, product_id, service, service_type]
 pii_fields: [session_id]
 fields:

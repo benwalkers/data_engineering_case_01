@@ -1,4 +1,4 @@
-catalogue_name: flixmedia_dq_rules
+catalogue_name: xyz_dq_rules
 version: 1.0.0
 rules:
   - {id: MISSING_SESSION_ID, applies_to: [modules, module_services], severity: BLOCKING, description: session_id is null or blank}
