@@ -1,0 +1,18 @@
+dataScan:
+  data:
+    resource: //bigquery.googleapis.com/projects/flixmedia-benjaminpiscoya/datasets/flixmedia_curated/tables/modules_curated
+  executionSpec:
+    trigger:
+      schedule:
+        cron: "0 6 * * *"
+  dataQualitySpec:
+    rules:
+      - column: session_token
+        nonNullExpectation: {}
+        dimension: COMPLETENESS
+      - column: distributor_id
+        nonNullExpectation: {}
+        dimension: COMPLETENESS
+      - column: product_id
+        nonNullExpectation: {}
+        dimension: COMPLETENESS

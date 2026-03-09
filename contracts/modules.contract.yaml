@@ -1,0 +1,27 @@
+contract_name: modules
+version: 1.0.0
+owner: data-engineering
+source:
+  project_id: flixmedia-benjaminpiscoya
+  dataset_id: flixmedia
+  table_id: modules
+target:
+  raw_table: flixmedia_raw.modules_raw
+  curated_table: flixmedia_curated.modules_curated
+  dq_table: flixmedia_dq.modules_dq
+grain: [date, distributor_id, product_id, module_id, module_pos]
+pii_fields: [session_id]
+fields:
+  - {name: date, type: DATE, required: true}
+  - {name: session_id, type: STRING, required: true, pii: true, deidentify: deterministic_token}
+  - {name: distributor_id, type: INT64, required: true}
+  - {name: product_id, type: INT64, required: true}
+  - {name: module_id, type: STRING, required: true}
+  - {name: module_pos, type: INT64, required: false}
+  - {name: views, type: INT64, required: false}
+  - {name: clicks, type: INT64, required: false}
+  - {name: view_time, type: INT64, required: false}
+rules:
+  - {id: MISSING_SESSION_ID, severity: BLOCKING, expression: "session_id IS NOT NULL AND TRIM(session_id) != ''"}
+  - {id: CLICK_GT_VIEWS, severity: BLOCKING, expression: "clicks IS NULL OR views IS NULL OR clicks <= views"}
+  - {id: VIEWS_GT_0_WITH_VIEW_TIME_0, severity: WARNING, expression: "views IS NULL OR view_time IS NULL OR NOT (views > 0 AND view_time = 0)"}

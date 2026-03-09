@@ -1,0 +1,8 @@
+catalogue_name: flixmedia_dq_rules
+version: 1.0.0
+rules:
+  - {id: MISSING_SESSION_ID, applies_to: [modules, module_services], severity: BLOCKING, description: session_id is null or blank}
+  - {id: CLICK_GT_VIEWS, applies_to: [modules], severity: BLOCKING, description: clicks exceeds views}
+  - {id: VIEWS_GT_0_WITH_VIEW_TIME_0, applies_to: [modules], severity: WARNING, description: views recorded with zero view time}
+  - {id: INVALID_LANG, applies_to: [module_services], severity: WARNING, description: language does not match expected pattern}
+  - {id: INVALID_CURRENCY, applies_to: [module_services], severity: WARNING, description: currency does not match ISO pattern}

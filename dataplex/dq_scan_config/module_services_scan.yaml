@@ -1,0 +1,22 @@
+dataScan:
+  data:
+    resource: //bigquery.googleapis.com/projects/flixmedia-benjaminpiscoya/datasets/flixmedia_curated/tables/module_services_curated
+  executionSpec:
+    trigger:
+      schedule:
+        cron: "0 6 * * *"
+  dataQualitySpec:
+    rules:
+      - column: session_token
+        nonNullExpectation: {}
+        dimension: COMPLETENESS
+      - column: lang
+        regexExpectation:
+          regex: "^[A-Za-z]{2}(-[A-Za-z]{2})?$"
+        ignoreNull: true
+        dimension: VALIDITY
+      - column: currency
+        regexExpectation:
+          regex: "^[A-Z]{3}$"
+        ignoreNull: true
+        dimension: VALIDITY

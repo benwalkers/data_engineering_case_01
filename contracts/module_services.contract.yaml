@@ -1,0 +1,27 @@
+contract_name: module_services
+version: 1.0.0
+owner: data-engineering
+source:
+  project_id: flixmedia-benjaminpiscoya
+  dataset_id: flixmedia
+  table_id: module_Services
+target:
+  raw_table: flixmedia_raw.module_services_raw
+  curated_table: flixmedia_curated.module_services_curated
+  dq_table: flixmedia_dq.module_services_dq
+grain: [date, distributor_id, product_id, service, service_type]
+pii_fields: [session_id]
+fields:
+  - {name: date, type: DATE, required: true}
+  - {name: session_id, type: STRING, required: true, pii: true, deidentify: deterministic_token}
+  - {name: distributor_id, type: INT64, required: true}
+  - {name: product_id, type: INT64, required: true}
+  - {name: service, type: STRING, required: false}
+  - {name: service_type, type: STRING, required: false}
+  - {name: lang, type: STRING, required: false}
+  - {name: currency, type: STRING, required: false}
+  - {name: gbp_price, type: FLOAT64, required: false}
+rules:
+  - {id: MISSING_SESSION_ID, severity: BLOCKING, expression: "session_id IS NOT NULL AND TRIM(session_id) != ''"}
+  - {id: INVALID_LANG, severity: WARNING, expression: "lang IS NULL OR REGEXP_CONTAINS(lang, r'^[A-Za-z]{2}(-[A-Za-z]{2})?$')"}
+  - {id: INVALID_CURRENCY, severity: WARNING, expression: "currency IS NULL OR REGEXP_CONTAINS(currency, r'^[A-Z]{3}$')"}
