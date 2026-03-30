@@ -1,5 +1,6 @@
-# data_engineering_case_01
-GCP Data Engineering Solution for a click streaming business model
+# GCP Data Engineering Solution for a click streaming business model
+
+![Case Design](./docs/case-design.png)
 
 In-scope raw assets
 XYZ-benjaminpiscoya.XYZ.modules
